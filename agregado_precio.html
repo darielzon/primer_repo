@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administrar Productos</title>
+
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <script>
+        if (localStorage.getItem("usuarioLogueado") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
+
+
+
+<link rel="stylesheet" href="agregar_precio.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>MENÚ</h2>
+
+    <a href="dashboard.html">
+        🏠 Página Principal
+    </a>
+
+    <a href="agregar_producto.html">
+        📦 Agregar Productos
+    </a>
+
+</div>
+
+<div class="main">
+
+    <div class="header">
+
+        <h1>Administración de Productos</h1>
+
+    </div>
+
+    <div class="content">
+
+        <!-- BUSCADOR -->
+
+        <div class="seccion-busqueda">
+
+            <h2>Buscar Producto</h2>
+
+            <div class="inputs-busqueda">
+
+                <input
+                    id="searchMarca"
+                    placeholder="Buscar por marca">
+
+                <input
+                    id="searchModelo"
+                    placeholder="Buscar por modelo">
+
+                <input
+                    id="searchSerial"
+                    placeholder="Buscar por serial">
+
+            </div>
+
+            <button
+                class="btn-buscar"
+                onclick="buscarProducto()">
+
+                🔍 Buscar
+
+            </button>
+
+        </div>
+
+        <!-- TABLA -->
+
+        <div class="seccion-tabla">
+
+            <h2>Listado de Productos</h2>
+
+            <table class="tabla-productos">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Imagen</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Serial</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tbodyProductos">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MODAL -->
+
+<div
+id="modalEditar"
+class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Editar Producto</h2>
+
+            <button
+            class="close-modal"
+            onclick="cerrarModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+        <!-- IMAGEN -->
+
+      <div class="modal-imagen-col">
+
+    <img
+        id="modalImagen"
+        src="img/camara.png"
+        alt="Imagen producto">
+
+    <br><br>
+
+    <input
+        type="file"
+        id="modalFileImagen"
+        accept="image/*">
+
+    <br><br>
+
+    <input
+        type="text"
+        id="modalImagenInput"
+        placeholder="Ruta de imagen"
+        readonly>
+
+</div>
+
+        <!-- CAMPOS -->
+
+        <div class="modal-grid">
+
+            <input
+            id="modalMarca"
+            placeholder="Marca">
+
+            <input
+            id="modalModelo"
+            placeholder="Modelo">
+
+            <input
+            id="modalSerial"
+            placeholder="Número de serie">
+
+            <input
+            id="modalPrecio"
+            type="number"
+            placeholder="Precio">
+
+            <input
+            id="modalStock"
+            type="number"
+            placeholder="Stock">
+
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+
+        <div class="campo-grande">
+
+            <label>Descripción</label>
+
+            <textarea
+            id="modalDescripcion"></textarea>
+
+        </div>
+
+        <!-- CARACTERÍSTICAS -->
+
+        <div class="campo-grande">
+
+            <label>Características</label>
+
+            <textarea
+            id="modalCaracteristicas"></textarea>
+
+        </div>
+
+        <!-- BOTONES -->
+
+        <div class="modal-footer">
+
+            <button
+            class="btn-cancelar"
+            onclick="cerrarModal()">
+
+                Cancelar
+
+            </button>
+
+            <button
+            class="btn-eliminar"
+            onclick="eliminarProducto()">
+
+                🗑 Eliminar
+
+            </button>
+
+            <button
+            class="btn-guardar"
+            onclick="guardarDatos()">
+
+                💾 Guardar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="agregar_precio.js"></script>
+
+
+</body>
+</html>

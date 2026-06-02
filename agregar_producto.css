@@ -1,0 +1,288 @@
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #edf2f7;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width: 240px;
+    background: #1e293b;
+    color: white;
+    padding: 30px 20px;
+}
+
+.sidebar h2{
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.sidebar a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background: #334155;
+}
+
+/* MAIN */
+
+.main{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+.header{
+    background: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.header h1{
+    color: #1e293b;
+    font-size: 24px;
+}
+
+.logout-btn{
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.logout-btn:hover{
+    background: #b91c1c;
+}
+
+/* CONTENT */
+
+.content{
+    padding: 40px;
+}
+
+/* CARD */
+
+.seccion-agregar{
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.05);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.seccion-agregar h2{
+    margin-bottom: 30px;
+    color: #1e293b;
+    font-size: 24px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 15px;
+}
+
+/* FORM */
+
+.formulario-contenedor{
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* FOTO */
+
+.foto-uploader{
+    flex: 0 0 230px;
+    text-align: center;
+}
+
+.foto-preview-box{
+    width: 220px;
+    height: 220px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #f8fafc;
+    transition: 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.foto-preview-box:hover{
+    border-color: #2563eb;
+}
+
+.foto-preview-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.icon-cam{
+    font-size: 35px;
+    color: #64748b;
+}
+
+.foto-preview-box span{
+    margin-top: 10px;
+    color: #64748b;
+    font-weight: bold;
+}
+
+/* CAMPOS */
+
+.campos-columna{
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label{
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #475569;
+    font-size: 14px;
+}
+
+.input-group input,
+.input-group textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    border-color: #2563eb;
+}
+
+textarea{
+    resize: none;
+}
+
+/* TEXTAREA GRANDE */
+
+.full-width{
+    grid-column: span 2;
+}
+
+/* BOTONES */
+
+.botones-contenedor{
+    grid-column: span 2;
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-guardar{
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-guardar:hover{
+    background: #15803d;
+}
+
+.btn-cancelar{
+    background: #64748b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-cancelar:hover{
+    background: #475569;
+}
+
+/* MENSAJE */
+
+.mensaje-exito{
+    grid-column: span 2;
+    background: #dcfce7;
+    color: #16a34a;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #bbf7d0;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top: auto;
+    background: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<script>
+if(localStorage.getItem("usuarioLogueado") !== "true"){
+    window.location.href = "login.html";
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <h2>MENÚ</h2>
+
+    <a href="agregado_precio.html">
+        🏷 Administrar Productos
+    </a>
+
+    <a href="agregar_producto.html">
+        📦 Agregar Productos
+    </a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-left">
+
+            <img src="img/moto.jpg">
+
+            <h1>Bienvenido Ing. Oscar</h1>
+
+        </div>
+
+        <button
+        class="logout-btn"
+        onclick="cerrarSesion()">
+
+            Cerrar sesión
+
+        </button>
+
+    </div>
+
+    <!-- CONTENIDO -->
+
+    <div class="content">
+
+        <!-- BUSCADOR -->
+
+        <div class="busqueda">
+
+            <h2>Buscar Producto</h2>
+
+            <div class="inputs">
+
+                <div class="input-group">
+
+    <label>Marca</label>
+
+    <input
+        type="text"
+        id="searchMarca"
+        list="listaMarcas">
+
+    <datalist id="listaMarcas"></datalist>
+
+</div>
+
+                
+
+              <div class="input-group">
+
+    <label>Modelo</label>
+
+    <input
+        type="text"
+        id="searchModelo"
+        list="listaModelos">
+
+    <datalist id="listaModelos"></datalist>
+
+</div>
+
+                
+
+                <div class="input-group">
+
+                    <label>Número de Serie</label>
+
+                    <input
+                    type="text"
+                    id="buscarSerie">
+
+                </div>
+
+            </div>
+
+            <button
+            class="buscar-btn"
+            onclick="buscarProducto()">
+
+                🔍 Buscar Producto
+
+            </button>
+
+        </div>
+
+        <!-- PRODUCTO ENCONTRADO -->
+
+        <div
+        class="producto"
+        id="productoEncontrado"
+        style="display:none;">
+
+            <h2>✔ Producto encontrado</h2>
+
+            <div class="producto-info">
+
+                <!-- IMAGEN -->
+
+                <img
+                id="productoImagen"
+                src="">
+
+                <!-- DETALLES -->
+
+                <div class="detalles">
+
+                    <p>
+                        <strong>Marca:</strong>
+                        <span id="productoMarca"></span>
+                    </p>
+
+                    <p>
+                        <strong>Modelo:</strong>
+                        <span id="productoModelo"></span>
+                    </p>
+
+                    <p>
+                        <strong>Serie:</strong>
+                        <span id="productoSerie"></span>
+                    </p>
+
+                    <p>
+                        <strong>Precio:</strong>
+                        $
+                        <span id="productoPrecio"></span>
+                    </p>
+
+                    <p>
+                        <strong>Stock disponible:</strong>
+                        <span id="productoStock"></span>
+                    </p>
+
+                </div>
+
+                <!-- CARACTERISTICAS -->
+
+                <div class="caracteristicas">
+
+                    <h3>Descripción</h3>
+
+                    <p id="productoDescripcion"></p>
+
+                    <br>
+
+                    <h3>Características</h3>
+
+                    <p id="productoCaracteristicas"></p>
+
+                </div>
+
+            </div>
+
+            <!-- DATOS DE VENTA -->
+
+            <div
+            style="
+            margin-top:25px;
+            padding:20px;
+            background:#f8fafc;
+            border-radius:12px;">
+
+                <h3>Datos de la Venta</h3>
+
+                <br>
+
+                <label>Nombre del Cliente</label>
+
+                <input
+                type="text"
+                id="clienteNombre"
+                placeholder="Nombre del cliente">
+
+                <br><br>
+
+                <label>Cantidad a vender</label>
+
+                <input
+                type="number"
+                id="cantidadVenta"
+                min="1"
+                value="1">
+
+                <br><br>
+
+                <label>Total</label>
+
+                <input
+                type="text"
+                id="totalVenta"
+                readonly>
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="botones">
+
+                <button
+                class="vender"
+                onclick="venderProducto()">
+
+                    💰 Vender
+
+                </button>
+<button
+class="ticket"
+onclick="generarPDF()">
+
+📄 Descargar PDF
+
+</button>
+
+                <button
+                class="imprimir"
+                onclick="imprimirTicket()">
+
+                    🖨 Imprimir
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        Worldcam © 2026 | Soporte y garantías
+
+    </footer>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

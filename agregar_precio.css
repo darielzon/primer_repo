@@ -1,0 +1,300 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #edf2f7;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    background: #1e293b;
+    color: white;
+    padding: 30px 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #334155;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header {
+    background: white;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    color: #1e293b;
+}
+
+/* CONTENT */
+.content {
+    padding: 40px;
+}
+
+/* BUSCADOR */
+.seccion-busqueda {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.inputs-busqueda {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+}
+
+/* BOTÓN */
+.btn-buscar {
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* TABLA */
+.seccion-tabla {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-productos th,
+.tabla-productos td {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* BOTÓN EDITAR */
+button {
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 600px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    font-size: 22px;
+    background: none;
+    border: none;
+}
+
+.modal-imagen-col {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.modal-imagen-col img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.btn-cancelar {
+    background: gray;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn-guardar {
+    background: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+
+/* IMAGEN TABLA */
+
+.img-tabla{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* BOTON EDITAR */
+
+.btn-editar{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-editar:hover{
+    background:#1d4ed8;
+}
+
+/* BOTON ELIMINAR */
+
+.btn-eliminar{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-eliminar:hover{
+    background:#b91c1c;
+}
+
+/* MODAL MAS GRANDE */
+
+.modal-content{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    width:700px;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+/* IMAGEN MODAL */
+
+.modal-imagen-col{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.modal-imagen-col img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #cbd5e1;
+}
+
+/* INPUT IMAGEN */
+
+#modalImagenInput{
+    width:100%;
+    margin-top:10px;
+}
+
+/* DESCRIPCION Y CARACTERISTICAS */
+
+.campo-grande{
+    margin-top:15px;
+}
+
+.campo-grande label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+.campo-grande textarea{
+    width:100%;
+    min-height:100px;
+    resize:vertical;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+}
+
+/* BOTONES FOOTER */
+
+.modal-footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+}
