@@ -178,13 +178,14 @@ function mostrarProducto(producto){
         "productoCaracteristicas"
     ).textContent =
     producto.caracteristicas || "-";
-
-    document.getElementById(
-        "productoImagen"
-    ).src =
-    producto.imagen
-    ? `https://primer-repo-nwmb.onrender.com/${producto.imagen}`
-    : "img/camara.png";
+    
+document.getElementById(
+    "productoImagen"
+).src =
+producto.imagen &&
+producto.imagen !== "undefined"
+? producto.imagen
+: "img/camara.png";
 
     calcularTotal();
 
