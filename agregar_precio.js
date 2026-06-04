@@ -67,7 +67,7 @@ src="${
 
                 <button
                     class="btn-editar"
-                    onclick="abrirModal(${p.idProducto})">
+                    onclick="abrirModal(${p.idProducto})"
 
                     ✏ Editar
 

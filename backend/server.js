@@ -3,7 +3,7 @@ const cors = require('cors');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
 
-const { conectarDB, sql } = require('./db');
+const { conectarDB, pool } = require('./db');
 
 const app = express();
 
@@ -110,15 +110,27 @@ app.get('/productos', async (req, res) => {
 
     try {
 
-        const resultado = await sql.query(`
+       const resultado = await pool.query(`
 
-            SELECT *
-            FROM Productos
-            ORDER BY idProducto DESC
+SELECT
 
-        `);
+    idproducto AS "idProducto",
+    marca,
+    modelo,
+    numserie AS "numSerie",
+    precio,
+    stock,
+    descripcion,
+    caracteristicas,
+    imagen,
+    fecharegistro AS "fechaRegistro"
 
-        res.json(resultado.recordset);
+FROM Productos
+
+ORDER BY idproducto DESC
+
+`);
+        res.json(resultado.rows);
 
     }
     catch (error) {
@@ -135,7 +147,6 @@ app.get('/productos', async (req, res) => {
     }
 
 });
-
 
 // ==========================
 // AGREGAR PRODUCTO
@@ -158,7 +169,9 @@ app.post('/agregarProducto', async (req, res) => {
 
         } = req.body;
 
-        await sql.query`
+        await pool.query(
+
+            `
 
             INSERT INTO Productos
             (
@@ -177,18 +190,33 @@ app.post('/agregarProducto', async (req, res) => {
             VALUES
             (
 
-                ${marca},
-                ${modelo},
-                ${numSerie},
-                ${precio},
-                ${stock},
-                ${descripcion},
-                ${caracteristicas},
-                ${imagen}
+                $1,
+                $2,
+                $3,
+                $4,
+                $5,
+                $6,
+                $7,
+                $8
 
             )
 
-        `;
+            `,
+
+            [
+
+                marca,
+                modelo,
+                numSerie,
+                precio,
+                stock,
+                descripcion,
+                caracteristicas,
+                imagen
+
+            ]
+
+        );
 
         res.json({
 
@@ -237,24 +265,42 @@ app.put('/productos/:id', async (req, res) => {
 
         } = req.body;
 
-        await sql.query`
+        await pool.query(
+
+            `
 
             UPDATE Productos
 
             SET
 
-                marca = ${marca},
-                modelo = ${modelo},
-                numSerie = ${numSerie},
-                precio = ${precio},
-                stock = ${stock},
-                descripcion = ${descripcion},
-                caracteristicas = ${caracteristicas},
-                imagen = ${imagen}
+                marca = $1,
+                modelo = $2,
+                numSerie = $3,
+                precio = $4,
+                stock = $5,
+                descripcion = $6,
+                caracteristicas = $7,
+                imagen = $8
 
-            WHERE idProducto = ${id}
+            WHERE idProducto = $9
 
-        `;
+            `,
+
+            [
+
+                marca,
+                modelo,
+                numSerie,
+                precio,
+                stock,
+                descripcion,
+                caracteristicas,
+                imagen,
+                id
+
+            ]
+
+        );
 
         res.json({
 
@@ -290,13 +336,19 @@ app.delete('/productos/:id', async (req, res) => {
 
         const id = req.params.id;
 
-        await sql.query`
+        await pool.query(
+
+            `
 
             DELETE FROM Productos
 
-            WHERE idProducto = ${id}
+            WHERE idProducto = $1
 
-        `;
+            `,
+
+            [id]
+
+        );
 
         res.json({
 
@@ -320,26 +372,32 @@ app.delete('/productos/:id', async (req, res) => {
     }
 
 });
+// ==========================
+// LOGIN
+// ==========================
+
 app.post('/login', async (req, res) => {
 
     try {
 
         const {
-
             usuario,
             password
-
         } = req.body;
 
-        const resultado = await sql.query`
+        const resultado = await pool.query(
 
+            `
             SELECT *
             FROM Usuarios
-            WHERE usuario = ${usuario}
+            WHERE usuario = $1
+            `,
 
-        `;
+            [usuario]
 
-        if(resultado.recordset.length === 0){
+        );
+
+        if(resultado.rows.length === 0){
 
             return res.status(401).json({
 
@@ -350,13 +408,13 @@ app.post('/login', async (req, res) => {
         }
 
         const usuarioDB =
-        resultado.recordset[0];
+        resultado.rows[0];
 
         const coincide =
         await bcrypt.compare(
 
             password,
-            usuarioDB.passwordHash
+            usuarioDB.passwordhash
 
         );
 
@@ -375,7 +433,7 @@ app.post('/login', async (req, res) => {
             mensaje: 'Login correcto',
 
             nombre:
-            usuarioDB.nombreCompleto
+            usuarioDB.nombrecompleto
 
         });
 
@@ -403,82 +461,89 @@ app.post('/vender', async (req, res) => {
     try {
 
         const {
-
             idProducto,
             cliente,
             cantidad
-
         } = req.body;
 
-        const producto = await sql.query`
+        const producto = await pool.query(
 
+            `
             SELECT *
-            FROM Productos
-            WHERE idProducto = ${idProducto}
+            FROM productos
+            WHERE idproducto = $1
+            `,
+            [idProducto]
 
-        `;
+        );
 
-        if(producto.recordset.length === 0){
+        if (producto.rows.length === 0) {
 
             return res.status(404).json({
-
                 mensaje: 'Producto no encontrado'
-
             });
 
         }
 
-        const p = producto.recordset[0];
+        const p = producto.rows[0];
 
-        if(cantidad > p.stock){
+        if (cantidad > p.stock) {
 
             return res.status(400).json({
-
                 mensaje: 'No hay suficiente stock'
-
             });
 
         }
 
         const nuevoStock =
-        p.stock - cantidad;
+            p.stock - cantidad;
 
         const total =
-        p.precio * cantidad;
+            Number(p.precio) * cantidad;
 
-        await sql.query`
+        await pool.query(
 
-            UPDATE Productos
+            `
+            UPDATE productos
+            SET stock = $1
+            WHERE idproducto = $2
+            `,
+            [
+                nuevoStock,
+                idProducto
+            ]
 
-            SET stock = ${nuevoStock}
+        );
 
-            WHERE idProducto = ${idProducto}
+        await pool.query(
 
-        `;
-
-        await sql.query`
-
-            INSERT INTO Ventas(
-
+            `
+            INSERT INTO ventas
+            (
+                idproducto,
+                cliente,
+                cantidad,
+                preciounitario,
+                total
+            )
+            VALUES
+            (
+                $1,
+                $2,
+                $3,
+                $4,
+                $5
+            )
+            `,
+            [
                 idProducto,
                 cliente,
                 cantidad,
-                precioUnitario,
+                p.precio,
                 total
+            ]
 
-            )
-
-            VALUES(
-
-                ${idProducto},
-                ${cliente},
-                ${cantidad},
-                ${p.precio},
-                ${total}
-
-            )
-
-        `;
+        );
 
         res.json({
 
@@ -489,7 +554,7 @@ app.post('/vender', async (req, res) => {
         });
 
     }
-    catch(error){
+    catch (error) {
 
         console.log(error);
 

@@ -5,13 +5,9 @@ const { Pool } = require('pg');
 const pool = new Pool({
 
     host: process.env.DB_HOST,
-
     port: process.env.DB_PORT,
-
     database: process.env.DB_NAME,
-
     user: process.env.DB_USER,
-
     password: process.env.DB_PASSWORD,
 
     ssl: {
@@ -20,20 +16,24 @@ const pool = new Pool({
 
 });
 
-async function conectarDB() {
+async function probarConexion() {
 
     try {
 
-        const conexion = await pool.connect();
+        const resultado = await pool.query(
+            'SELECT NOW()'
+        );
 
-        console.log('Conectado a PostgreSQL 🚀');
+        console.log(
+            'Conexión exitosa 🚀'
+        );
 
-        conexion.release();
+        console.log(
+            resultado.rows
+        );
 
     }
     catch(error){
-
-        console.log('Error de conexión');
 
         console.log(error);
 
@@ -41,10 +41,4 @@ async function conectarDB() {
 
 }
 
-module.exports = {
-
-    pool,
-
-    conectarDB
-
-};
+probarConexion();
