@@ -64,14 +64,13 @@ p.imagen
             <td>${p.stock}</td>
 
             <td>
+<button
+class="btn-editar"
+onclick="abrirModal(${p.idProducto})">
 
-                <button
-                    class="btn-editar"
-                    onclick="abrirModal(${p.idProducto})"
+✏ Editar
 
-                    ✏ Editar
-
-                </button>
+</button>
 
             </td>
 
