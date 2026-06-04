@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/productos";
+const API = "https://primer-repo-nwmb.onrender.com/productos";
 
 let productosGlobal = [];
 let idProductoActual = null;
@@ -48,7 +48,7 @@ function renderTabla(data) {
 class="img-tabla"
 src="${
     p.imagen
-        ? `http://localhost:3000/${p.imagen}`
+        ? `https://primer-repo-nwmb.onrender.com/${p.imagen}`
         : 'img/camara.png'
 }">
             </td>
@@ -169,7 +169,7 @@ function abrirModal(id){
 
     document.getElementById("modalImagen").src =
 producto.imagen
-    ? `http://localhost:3000/${producto.imagen}`
+    ? `https://primer-repo-nwmb.onrender.com/${producto.imagen}`
     : "img/camara.png";
 
     document
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const respuesta =
             await fetch(
-                "http://localhost:3000/subirImagen",
+                "https://primer-repo-nwmb.onrender.com/subirImagen",
                 {
                     method: "POST",
                     body: formData
@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document
             .getElementById("modalImagen")
             .src =
-            `http://localhost:3000/${imagenNueva}`;
+            `https://primer-repo-nwmb.onrender.com/${imagenNueva}`;
 
         }
         catch(error){

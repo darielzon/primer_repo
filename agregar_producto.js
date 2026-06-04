@@ -93,7 +93,7 @@ async function simularGuardado(){
             const respuestaImagen =
             await fetch(
 
-                "http://localhost:3000/subirImagen",
+                "https://primer-repo-nwmb.onrender.com/subirImagen",
 
                 {
 
@@ -120,7 +120,7 @@ async function simularGuardado(){
         const respuesta =
         await fetch(
 
-            "http://localhost:3000/agregarProducto",
+            "https://primer-repo-nwmb.onrender.com/agregarProducto",
 
             {
 

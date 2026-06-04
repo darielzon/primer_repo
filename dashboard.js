@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/productos";
+const API = "https://primer-repo-nwmb.onrender.com/productos";
 
 let productosGlobal = [];
 let productoActual = null;
@@ -183,7 +183,7 @@ function mostrarProducto(producto){
         "productoImagen"
     ).src =
     producto.imagen
-    ? `http://localhost:3000/${producto.imagen}`
+    ? `https://primer-repo-nwmb.onrender.com/${producto.imagen}`
     : "img/camara.png";
 
     calcularTotal();
@@ -283,7 +283,7 @@ async function venderProducto(){
 
         const res = await fetch(
 
-            "http://localhost:3000/vender",
+            "https://primer-repo-nwmb.onrender.com/vender",
 
             {
 

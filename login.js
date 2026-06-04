@@ -10,7 +10,7 @@ async function entrar(){
 
         const res = await fetch(
 
-            "http://localhost:3000/login",
+            "https://primer-repo-nwmb.onrender.com/login",
 
             {
 
