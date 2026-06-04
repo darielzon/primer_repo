@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
-
+const supabase = require('./supabase');
 const { conectarDB, pool } = require('./db');
 
 const app = express();
@@ -15,29 +15,10 @@ app.use(express.json());
 // CONFIGURAR MULTER
 // ==========================
 
-const storage = multer.diskStorage({
 
-    destination: (req, file, cb) => {
-
-        cb(null, 'uploads/');
-
-    },
-
-    filename: (req, file, cb) => {
-
-        const nombreUnico =
-            Date.now() +
-            '-' +
-            file.originalname;
-
-        cb(null, nombreUnico);
-
-    }
-
-});
 
 const upload = multer({
-    storage
+    storage: multer.memoryStorage()
 });
 
 
@@ -45,7 +26,7 @@ const upload = multer({
 // PERMITIR VER IMÁGENES
 // ==========================
 
-app.use('/uploads', express.static('uploads'));
+//app.use('/uploads', express.static('uploads'));
 
 
 // ==========================
@@ -71,35 +52,67 @@ app.get('/', (req, res) => {
 // ==========================
 
 app.post(
-    '/subirImagen',
-    upload.single('imagen'),
-    (req, res) => {
+'/subirImagen',
+upload.single('imagen'),
+async (req, res) => {
 
-        try {
+    try {
 
-            res.json({
+        const nombreArchivo =
+            Date.now() +
+            "-" +
+            req.file.originalname;
 
-                ruta:
-                `uploads/${req.file.filename}`
+        const { error } =
+        await supabase.storage
+        .from('productos')
+        .upload(
 
-            });
+            nombreArchivo,
+            req.file.buffer,
+
+            {
+                contentType:
+                req.file.mimetype
+            }
+
+        );
+
+        if(error){
+
+            throw error;
 
         }
-        catch (error) {
 
-            console.log(error);
+        const { data } =
+        supabase.storage
+        .from('productos')
+        .getPublicUrl(
+            nombreArchivo
+        );
 
-            res.status(500).json({
+        res.json({
 
-                mensaje:
-                'Error al subir imagen'
+            ruta:
+            data.publicUrl
 
-            });
-
-        }
+        });
 
     }
-);
+    catch(error){
+
+        console.log(error);
+
+        res.status(500).json({
+
+            mensaje:
+            'Error al subir imagen'
+
+        });
+
+    }
+
+});
 
 
 // ==========================
