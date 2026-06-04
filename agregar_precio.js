@@ -47,10 +47,10 @@ function renderTabla(data) {
                 <img
 class="img-tabla"
 src="${
-    p.imagen
-        ? `https://primer-repo-nwmb.onrender.com/${p.imagen}`
-        : 'img/camara.png'
-}">
+p.imagen
+? p.imagen
+: 'img/camara.png'
+}"
             </td>
 
             <td>${p.marca}</td>
@@ -169,8 +169,8 @@ function abrirModal(id){
 
     document.getElementById("modalImagen").src =
 producto.imagen
-    ? `https://primer-repo-nwmb.onrender.com/${producto.imagen}`
-    : "img/camara.png";
+? producto.imagen
+: "img/camara.png";
 
     document
         .getElementById("modalEditar")
@@ -380,11 +380,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .getElementById("modalImagenInput")
             .value = imagenNueva;
 
-            document
-            .getElementById("modalImagen")
-            .src =
-            `https://primer-repo-nwmb.onrender.com/${imagenNueva}`;
-
+           document
+.getElementById("modalImagen")
+.src =
+imagenNueva;
         }
         catch(error){
 

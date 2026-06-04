@@ -26,7 +26,7 @@ const upload = multer({
 // PERMITIR VER IMÁGENES
 // ==========================
 
-//app.use('/uploads', express.static('uploads'));
+
 
 
 // ==========================
