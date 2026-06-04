@@ -107,6 +107,9 @@ async function simularGuardado(){
 
             const dataImagen =
             await respuestaImagen.json();
+            console.log(dataImagen);
+console.log("URL imagen:", dataImagen.ruta);
+
 
             imagenRuta =
             dataImagen.ruta;
