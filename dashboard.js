@@ -560,7 +560,15 @@ async function generarPDF(){
 
 function imprimirTicket(){
 
-  
+
+    crearTicket();
+
+    const ticket =
+    localStorage.getItem(
+        "ticketActual"
+    );
+
+
 
     const ventana =
 
