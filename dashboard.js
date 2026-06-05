@@ -178,7 +178,7 @@ function mostrarProducto(producto){
         "productoCaracteristicas"
     ).textContent =
     producto.caracteristicas || "-";
-    
+
 document.getElementById(
     "productoImagen"
 ).src =
@@ -560,21 +560,7 @@ async function generarPDF(){
 
 function imprimirTicket(){
 
-    const ticket =
-
-    localStorage.getItem(
-        "ticketActual"
-    );
-
-    if(!ticket){
-
-        alert(
-            "Primero crea un ticket"
-        );
-
-        return;
-
-    }
+  
 
     const ventana =
 
