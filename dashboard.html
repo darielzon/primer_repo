@@ -235,30 +235,41 @@ if(localStorage.getItem("usuarioLogueado") !== "true"){
 
             <!-- BOTONES -->
 
-            <div class="botones">
+        <div class="botones">
 
-                <button
-                class="vender"
-                onclick="venderProducto()">
+    <button
+    class="vender"
+    onclick="venderProducto()">
 
-                    💰 Vender
+        💰 Vender
 
-                </button>
-<button
-class="ticket"
-onclick="generarPDF()">
+    </button>
 
-📄 Descargar PDF
+    <button
+    class="pdf"
+    onclick="generarPDF()">
 
-</button>
+        📄 Descargar PDF
 
-                <button
-                class="imprimir"
-                onclick="imprimirTicket()">
+    </button>
 
-                    🖨 Imprimir
+    <button
+    class="ticket"
+    onclick="crearTicket()">
 
-                </button>
+        🎫 Crear Ticket
+
+    </button>
+
+    <button
+    class="imprimir"
+    onclick="imprimirTicket()">
+
+        🖨 Imprimir
+
+    </button>
+
+</div>
 
             </div>
 

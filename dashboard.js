@@ -560,24 +560,26 @@ async function generarPDF(){
 
 function imprimirTicket(){
 
-
-    crearTicket();
-
     const ticket =
     localStorage.getItem(
         "ticketActual"
     );
 
+    if(!ticket){
 
+        alert(
+            "Primero crea un ticket"
+        );
+
+        return;
+
+    }
 
     const ventana =
-
     window.open(
-
         "",
         "_blank",
         "width=400,height=600"
-
     );
 
     ventana.document.write(`
@@ -591,10 +593,8 @@ function imprimirTicket(){
             <style>
 
                 body{
-
-                    font-family:monospace;
-                    padding:20px;
-
+                    font-family: monospace;
+                    padding: 20px;
                 }
 
             </style>
