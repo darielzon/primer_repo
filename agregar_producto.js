@@ -55,7 +55,7 @@ async function simularGuardado(){
 
     // VALIDACIONES
 
-    if(!marca || !modelo || !precio || !stock){
+    if( !categoria || !precio || !stock){
 
         alert("Completa todos los campos obligatorios.");
         return;
