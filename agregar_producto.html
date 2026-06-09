@@ -82,61 +82,103 @@
                 </div>
 
                 <!-- CAMPOS -->
-                <div class="campos-columna">
+                 
+<div class="campos-columna">
 
-                    <div class="input-group">
-                        <label>Marca:</label>
-                        <input type="text" id="marca">
-                    </div>
+    <div class="input-group">
+        <label>Marca:</label>
+        <input type="text" id="marca">
+    </div>
 
-                    <div class="input-group">
-                        <label>Modelo:</label>
-                        <input type="text" id="modelo">
-                    </div>
+    <div class="input-group">
+        <label>Modelo:</label>
+        <input type="text" id="modelo">
+    </div>
 
-                    <div class="input-group">
-                        <label>Número de Serie:</label>
-                        <input type="text" id="serial">
-                    </div>
+    <div class="input-group">
+        <label>Categoría:</label>
 
-                    <div class="input-group">
-                        <label>Precio:</label>
-                        <input type="number" id="precio">
-                    </div>
+        <select id="categoria">
 
-                    <div class="input-group">
-                        <label>Stock:</label>
-                        <input type="number" id="stock">
-                    </div>
+            <option value="">
+                Seleccione una categoría
+            </option>
 
-                    <div class="input-group full-width">
-                        <label>Descripción:</label>
-                        <textarea id="descripcion" rows="3"></textarea>
-                    </div>
+            <option value="Camara">
+                Camara
+            </option>
 
-                    <div class="input-group full-width">
-                        <label>Características:</label>
-                        <textarea id="caracteristicas" rows="5"></textarea>
-                    </div>
+            <option value="DVR">
+                DVR
+            </option>
 
-                    <div class="botones-contenedor">
+            <option value="Fuente de Poder">
+                Fuente de Poder
+            </option>
 
-                        <button class="btn-guardar"
-                        onclick="simularGuardado()">
-                            Guardar
-                        </button>
+            <option value="Monitor">
+                Monitor
+            </option>
 
-                        <button class="btn-cancelar"
-                        onclick="limpiarFormulario()">
-                            Cancelar
-                        </button>
+            <option value="Disco Duro">
+                Disco Duro
+            </option>
 
-                    </div>
+            <option value="Cable">
+                Cable
+            </option>
 
-                    <div class="mensaje-exito" id="msgExito">
-                        ✔ Producto agregado correctamente
-                    </div>
+            <option value="Accesorio">
+                Accesorio
+            </option>
 
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Número de Serie:</label>
+        <input type="text" id="serial">
+    </div>
+
+    <div class="input-group">
+        <label>Precio:</label>
+        <input type="number" id="precio">
+    </div>
+
+    <div class="input-group">
+        <label>Stock:</label>
+        <input type="number" id="stock">
+    </div>
+
+    <div class="input-group full-width">
+        <label>Descripción:</label>
+        <textarea id="descripcion" rows="3"></textarea>
+    </div>
+
+    <div class="input-group full-width">
+        <label>Características:</label>
+        <textarea id="caracteristicas" rows="5"></textarea>
+    </div>
+
+    <div class="botones-contenedor">
+
+        <button class="btn-guardar"
+        onclick="simularGuardado()">
+            Guardar
+        </button>
+
+        <button class="btn-cancelar"
+        onclick="limpiarFormulario()">
+            Cancelar
+        </button>
+
+    </div>
+
+    <div class="mensaje-exito" id="msgExito">
+        ✔ Producto agregado correctamente
+    </div>
+
+</div>
                 </div>
 
             </div>

@@ -48,13 +48,14 @@ async function simularGuardado(){
     const stock = document.getElementById('stock').value;
     const descripcion = document.getElementById('descripcion').value;
     const caracteristicas = document.getElementById('caracteristicas').value;
+    const categoria = document.getElementById('categoria').value;
 
     const archivo =
     document.getElementById('fileInput').files[0];
 
     // VALIDACIONES
 
-    if(!marca || !modelo || !serial || !precio || !stock){
+    if(!marca || !modelo || !precio || !stock){
 
         alert("Completa todos los campos obligatorios.");
         return;
@@ -141,6 +142,8 @@ console.log("URL imagen:", dataImagen.ruta);
                     marca,
                     modelo,
 
+                    categoria,
+
                     numSerie: serial,
 
                     precio:
@@ -155,6 +158,8 @@ console.log("URL imagen:", dataImagen.ruta);
 
                     imagen:
                     imagenRuta
+
+
 
                 })
 
@@ -199,7 +204,7 @@ function limpiarFormulario(){
     document.getElementById('stock').value = "";
     document.getElementById('descripcion').value = "";
     document.getElementById('caracteristicas').value = "";
-
+    document.getElementById('categoria').value = "";
     document.getElementById('imagePreview').style.display = "none";
 
     document.getElementById('uploadText').style.display = "block";

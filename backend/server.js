@@ -130,6 +130,7 @@ SELECT
     idproducto AS "idProducto",
     marca,
     modelo,
+    categoria,
     numserie AS "numSerie",
     precio,
     stock,
@@ -173,6 +174,7 @@ app.post('/agregarProducto', async (req, res) => {
 
             marca,
             modelo,
+            categoria,
             numSerie,
             precio,
             stock,
@@ -191,6 +193,7 @@ app.post('/agregarProducto', async (req, res) => {
 
                 marca,
                 modelo,
+                categoria,
                 numSerie,
                 precio,
                 stock,
@@ -210,7 +213,8 @@ app.post('/agregarProducto', async (req, res) => {
                 $5,
                 $6,
                 $7,
-                $8
+                $8,
+                $9
 
             )
 
@@ -220,6 +224,7 @@ app.post('/agregarProducto', async (req, res) => {
 
                 marca,
                 modelo,
+                categoria,
                 numSerie,
                 precio,
                 stock,
@@ -269,6 +274,7 @@ app.put('/productos/:id', async (req, res) => {
 
             marca,
             modelo,
+            categoria,
             numSerie,
             precio,
             stock,
@@ -288,14 +294,15 @@ app.put('/productos/:id', async (req, res) => {
 
                 marca = $1,
                 modelo = $2,
-                numSerie = $3,
-                precio = $4,
-                stock = $5,
-                descripcion = $6,
-                caracteristicas = $7,
-                imagen = $8
+                categoria=$3,
+                numSerie = $4,
+                precio = $5,
+                stock = $6,
+                descripcion = $7,
+                caracteristicas = $8,
+                imagen = $9
 
-            WHERE idProducto = $9
+            WHERE idProducto = $10
 
             `,
 
@@ -303,6 +310,7 @@ app.put('/productos/:id', async (req, res) => {
 
                 marca,
                 modelo,
+                categoria,
                 numSerie,
                 precio,
                 stock,
