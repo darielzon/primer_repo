@@ -144,7 +144,7 @@ console.log("URL imagen:", dataImagen.ruta);
 
                     categoria,
 
-                    numSerie: serial,
+                    numSerie: serial ||null,
 
                     precio:
                     parseFloat(precio),
