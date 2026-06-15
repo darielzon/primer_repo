@@ -96,6 +96,11 @@ function buscarProducto() {
     .value
     .toLowerCase();
 
+    const categoria =
+    document.getElementById("searchCategoria")
+    .value
+    .toLowerCase();
+
     const serial =
     document.getElementById("searchSerial")
     .value
@@ -113,9 +118,8 @@ function buscarProducto() {
 
         &&
 
-         (!categoria ||
-    p.categoria.toLowerCase().includes(categoria))
-
+        (!categoria ||
+        p.categoria?.toLowerCase().includes(categoria))
 
         &&
 
@@ -125,8 +129,9 @@ function buscarProducto() {
     );
 
     renderTabla(filtrados);
+};
 
-}
+
 
 // ==========================
 // ABRIR MODAL
