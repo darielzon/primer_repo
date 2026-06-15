@@ -109,12 +109,12 @@ function buscarProducto() {
     const filtrados = productosGlobal.filter(p =>
 
         (!marca ||
-        p.marca.toLowerCase().includes(marca))
+        p.marca?.toLowerCase().includes(marca))
 
         &&
 
         (!modelo ||
-        p.modelo.toLowerCase().includes(modelo))
+        p.modelo?.toLowerCase().includes(modelo))
 
         &&
 
