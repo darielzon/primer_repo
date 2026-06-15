@@ -113,8 +113,14 @@ function buscarProducto() {
 
         &&
 
+         (!categoria ||
+    p.categoria.toLowerCase().includes(categoria))
+
+
+        &&
+
         (!serial ||
-        p.numSerie.toLowerCase().includes(serial))
+        p.numSerie?.toLowerCase().includes(serial))
 
     );
 

@@ -49,25 +49,26 @@
 
         <!-- BUSCADOR -->
 
-        <div class="seccion-busqueda">
+      <div class="input-group">
+    <label>Categoría:</label>
 
-            <h2>Buscar Producto</h2>
+    <select id="categoriaBuscar">
 
-            <div class="inputs-busqueda">
+        <option value="">Todas</option>
 
-                <input
-                    id="searchMarca"
-                    placeholder="Buscar por marca">
+        <option value="Camara">Camara</option>
+        <option value="DVR">DVR</option>
+        <option value="Fuente de Poder">Fuente de Poder</option>
+        <option value="Monitor">Monitor</option>
+        <option value="Disco Duro">Disco Duro</option>
+        <option value="Cable">Cable</option>
+        <option value="Regulador">Regulador</option>
+        <option value="Intercomunicador">Intercomunicador</option>
+        
 
-                <input
-                    id="searchModelo"
-                    placeholder="Buscar por modelo">
 
-                <input
-                    id="searchSerial"
-                    placeholder="Buscar por serial">
-
-            </div>
+    </select>
+</div>
 
             <button
                 class="btn-buscar"
