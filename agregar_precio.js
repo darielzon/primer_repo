@@ -158,6 +158,9 @@ function abrirModal(id){
 
     document.getElementById("modalModelo").value =
         producto.modelo || "";
+       
+      document.getElementById("modalCategoria").value =
+    producto.categoria || "";
 
     document.getElementById("modalSerial").value =
         producto.numSerie || "";
@@ -233,6 +236,8 @@ async function guardarDatos(){
             modelo:
             document.getElementById("modalModelo").value,
 
+    categoria: 
+    document.getElementById("modalCategoria").value,
             numSerie:
             document.getElementById("modalSerial").value,
 
