@@ -138,7 +138,7 @@ function buscarProducto() {
 // ==========================
 
 function abrirModal(id){
-    console.log(producto);
+    
 
     const producto = productosGlobal.find(
         p => p.idProducto == id
