@@ -168,7 +168,7 @@ function buscarProducto(){
 
     productoActual = producto;
 
-    mostrarProducto(producto);
+    mostrarProducto(productosFiltrados);
     
 
 
