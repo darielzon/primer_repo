@@ -104,7 +104,7 @@ function buscarProducto(){
         &&
 
         (!serie ||
-        p.numSerie.toLowerCase().includes(serie))
+(p.numSerie || "").toLowerCase().includes(serial))
 
     );
 
