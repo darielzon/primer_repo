@@ -27,6 +27,47 @@ async function cargarProductos() {
     }
 
 }
+function mostrarResultados(productos) {
+
+    const contenedor =
+    document.getElementById("resultadosBusqueda");
+
+    contenedor.innerHTML = "";
+
+    productos.forEach(producto => {
+
+        contenedor.innerHTML += `
+
+            <div class="card-producto">
+
+                <img
+                    src="${producto.imagen || 'img/camara.png'}"
+                    width="120">
+
+                <h3>${producto.marca || 'Sin marca'}</h3>
+
+                <p><b>Modelo:</b> ${producto.modelo || 'Sin modelo'}</p>
+
+                <p><b>Categoría:</b> ${producto.categoria || 'Sin categoría'}</p>
+
+                <p><b>Serie:</b> ${producto.numSerie || 'Sin serie'}</p>
+
+                <p><b>Stock:</b> ${producto.stock}</p>
+
+                <button
+                    onclick="seleccionarProducto(${producto.idProducto})">
+
+                    Seleccionar
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+}
 
 // ==========================
 // CARGAR SUGERENCIAS
@@ -73,52 +114,49 @@ function cargarSugerencias(){
 
 function buscarProducto(){
 
-    const marca =
-    document.getElementById("searchMarca")
-    .value
-    .toLowerCase()
-    .trim();
+    const marca = document.getElementById("searchMarca")
+        .value
+        .toLowerCase()
+        .trim();
 
-    const modelo =
-    document.getElementById("searchModelo")
-    .value
-    .toLowerCase()
-    .trim();
+    const modelo = document.getElementById("searchModelo")
+        .value
+        .toLowerCase()
+        .trim();
 
-    const serie =
-    document.getElementById("buscarSerie")
-    .value
-    .toLowerCase()
-    .trim();
+    const serie = document.getElementById("buscarSerie")
+        .value
+        .toLowerCase()
+        .trim();
 
-    const producto = productosGlobal.find(p =>
+    const productosFiltrados = productosGlobal.filter(p =>
 
         (!marca ||
-        p.marca.toLowerCase().includes(marca))
+        (p.marca || "").toLowerCase().includes(marca))
 
         &&
 
         (!modelo ||
-        p.modelo.toLowerCase().includes(modelo))
+        (p.modelo || "").toLowerCase().includes(modelo))
 
         &&
 
         (!serie ||
-(p.numSerie || "").toLowerCase().includes(serie))
+        (p.numSerie || "").toLowerCase().includes(serie))
 
     );
 
-    if(!producto){
+    if(productosFiltrados.length === 0){
 
-        document.getElementById(
-            "productoEncontrado"
-        ).style.display = "none";
-
-        alert("Producto no encontrado");
+        alert("No se encontraron productos");
 
         return;
 
     }
+
+    mostrarResultados(productosFiltrados);
+
+}
 
     document.getElementById(
         "clienteNombre"
@@ -131,9 +169,24 @@ function buscarProducto(){
     productoActual = producto;
 
     mostrarProducto(producto);
+    
+
+
+function seleccionarProducto(id){
+
+    const producto = productosGlobal.find(
+        p => p.idProducto == id
+    );
+
+    if(!producto){
+        return;
+    }
+
+    productoActual = producto;
+
+    mostrarProducto(producto);
 
 }
-
 // ==========================
 // MOSTRAR PRODUCTO
 // ==========================
@@ -147,18 +200,23 @@ function mostrarProducto(producto){
     document.getElementById(
         "productoMarca"
     ).textContent =
-    producto.marca;
+    producto.marca || "sin marca" ;
 
     document.getElementById(
         "productoModelo"
     ).textContent =
-    producto.modelo;
+    producto.modelo || "sin modelo";
 
     document.getElementById(
         "productoSerie"
     ).textContent =
-    producto.numSerie;
+    producto.numSerie || "sin numero de serie ";
 
+    document.getElementById("productoDescripcion").textContent =
+    producto.descripcion || "-";
+
+document.getElementById("productoCaracteristicas").textContent =
+    producto.caracteristicas || "-";
     document.getElementById(
         "productoPrecio"
     ).textContent =
