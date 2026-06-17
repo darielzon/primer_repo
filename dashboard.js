@@ -107,6 +107,16 @@ function cargarSugerencias(){
     });
 
 }
+function normalizar(texto) {
+
+    return (texto || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
+
+
+}
 
 // ==========================
 // BUSCAR PRODUCTO
@@ -133,6 +143,11 @@ function buscarProducto() {
     .value
     .toLowerCase()
     .trim();
+    
+    const caracteristicas = normalizar(
+    document.getElementById("buscaCaracteristicas")
+    .value);
+
 
     const productosFiltrados = productosGlobal.filter(p =>
 
@@ -153,7 +168,13 @@ function buscarProducto() {
 (!categoria ||
 (p.categoria || "").toLowerCase().includes(categoria))
 
+(!caracteristicas ||
+normalizar(p.caracteristicas).includes(caracteristicas))
+
+    
+
     );
+    
     
 
     if (productosFiltrados.length === 0) {

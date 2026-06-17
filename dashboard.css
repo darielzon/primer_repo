@@ -262,3 +262,97 @@ footer{
     padding:15px;
 }
 
+/* ==========================
+   RESULTADOS DE BÚSQUEDA
+========================== */
+
+#resultadosBusqueda{
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+}
+.card-producto{
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+}
+.card-producto img{
+
+    width: 140px;
+
+    height: 140px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+
+}
+.card-producto h3{
+
+    color: #1e293b;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+
+}
+.card-producto p{
+
+    width: 100%;
+
+    margin: 5px 0;
+
+    color: #475569;
+
+    font-size: 14px;
+
+}
+.card-producto button{
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+.card-producto button:hover{
+
+    background: #1d4ed8;
+
+}
