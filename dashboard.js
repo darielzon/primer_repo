@@ -112,7 +112,7 @@ function cargarSugerencias(){
 // BUSCAR PRODUCTO
 // ==========================
 
-function buscarProducto(){
+function buscarProducto() {
 
     const marca = document.getElementById("searchMarca")
         .value
@@ -128,6 +128,11 @@ function buscarProducto(){
         .value
         .toLowerCase()
         .trim();
+    
+        const categoria = document.getElementById("searchCategoria")
+    .value
+    .toLowerCase()
+    .trim();
 
     const productosFiltrados = productosGlobal.filter(p =>
 
@@ -143,20 +148,24 @@ function buscarProducto(){
 
         (!serie ||
         (p.numSerie || "").toLowerCase().includes(serie))
+        &&
+
+(!categoria ||
+(p.categoria || "").toLowerCase().includes(categoria))
 
     );
+    
 
-    if(productosFiltrados.length === 0){
+    if (productosFiltrados.length === 0) {
 
         alert("No se encontraron productos");
 
+        document.getElementById(
+            "resultadosBusqueda"
+        ).innerHTML = "";
+
         return;
-
     }
-
-    mostrarResultados(productosFiltrados);
-
-}
 
     document.getElementById(
         "clienteNombre"
@@ -166,11 +175,8 @@ function buscarProducto(){
         "cantidadVenta"
     ).value = 1;
 
-    productoActual = producto;
-
-    mostrarProducto(productosFiltrados);
-    
-
+    mostrarResultados(productosFiltrados);
+}
 
 function seleccionarProducto(id){
 
@@ -182,8 +188,8 @@ function seleccionarProducto(id){
         return;
     }
 
-    productoActual = producto;
-
+     productoActual = producto;
+    
     mostrarProducto(producto);
 
 }
