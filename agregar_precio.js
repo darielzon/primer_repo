@@ -79,6 +79,15 @@ onclick="abrirModal(${p.idProducto})">
     });
 
 }
+function normalizar(texto) {
+
+    return (texto || "")
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/-/g, "")
+        .trim();
+
+}
 
 // ==========================
 // BUSCAR
@@ -106,9 +115,9 @@ function buscarProducto() {
     .value
     .toLowerCase();
 
-    const caracteristicas = document.getElementById("searchCaracteristicas")
-    .value
-    .toLowerCase();
+    const caracteristicas = normalizar(
+    document.getElementById("searchCaracteristicas")
+    .value);
 
     const filtrados = productosGlobal.filter(p =>
 
@@ -132,9 +141,8 @@ function buscarProducto() {
 
         &&
 
-        (!caracteristicas ||
-
-        p.caracteristicas?.toLowerCase().includes(caracteristicas))
+    (!caracteristicas ||
+normalizar(p.caracteristicas).includes(caracteristicas))
 
     );
 
