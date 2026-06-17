@@ -167,7 +167,8 @@ function buscarProducto() {
 
 (!categoria ||
 (p.categoria || "").toLowerCase().includes(categoria))
-
+ 
+&&
 (!caracteristicas ||
 normalizar(p.caracteristicas).includes(caracteristicas))
 
