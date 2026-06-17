@@ -106,6 +106,10 @@ function buscarProducto() {
     .value
     .toLowerCase();
 
+    const caracteristicas = document.getElementById("searchCaracteristicas")
+    .value
+    .toLowerCase();
+
     const filtrados = productosGlobal.filter(p =>
 
         (!marca ||
@@ -125,6 +129,12 @@ function buscarProducto() {
 
         (!serial ||
         p.numSerie?.toLowerCase().includes(serial))
+
+        &&
+
+        (!caracteristicas ||
+
+        p.caracteristicas?.toLowerCase().includes(caracteristicas))
 
     );
 
