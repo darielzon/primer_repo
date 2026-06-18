@@ -221,9 +221,9 @@ function seleccionarProducto(id){
 
 function mostrarProducto(producto){
 
-    document.getElementById(
-        "productoEncontrado"
-    ).style.display = "block";
+   document
+    .getElementById("modalProducto")
+    .classList.add("open");
 
     document.getElementById(
         "productoMarca"
@@ -749,6 +749,30 @@ window.addEventListener(
     }
 
 );
+
+// ==========================
+// CERRAR MODAL
+// ==========================
+
+function cerrarModalProducto() {
+
+    document
+        .getElementById("modalProducto")
+        .classList.remove("open");
+
+    productoActual = null;
+}
+
+window.addEventListener("click", function(e) {
+
+    const modal = document.getElementById("modalProducto");
+
+    if (e.target === modal) {
+
+        cerrarModalProducto();
+    }
+
+});
 
 // ==========================
 // INICIO

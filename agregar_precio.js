@@ -433,6 +433,16 @@ imagenNueva;
     });
 
 });
+window.addEventListener("click", function(e) {
+
+    const modal = document.getElementById("modalProducto");
+
+    if (e.target === modal) {
+
+        cerrarModalProducto();
+    }
+
+});
 
 
 cargarProductos();

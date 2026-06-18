@@ -161,14 +161,24 @@ if(localStorage.getItem("usuarioLogueado") !== "true"){
 
         <!-- PRODUCTO ENCONTRADO -->
 
+       <div id="modalProducto" class="modal-producto">
+
+    <div class="modal-producto-content">
+
+        <button
+            class="cerrar-modal"
+            onclick="cerrarModalProducto()">
+
+            ×
+
+        </button>
+
         <div
-        class="producto"
-        id="productoEncontrado"
-        style="display:none;">
+            class="producto"
+            id="productoEncontrado">
 
-            <h2>✔ Producto encontrado</h2>
-
-            <div class="producto-info">
+            <!-- TODO tu contenido actual -->
+             div class="producto-info">
 
                 <!-- IMAGEN -->
 
@@ -302,14 +312,17 @@ if(localStorage.getItem("usuarioLogueado") !== "true"){
         🖨 Imprimir
 
     </button>
-
+        
 </div>
-
-            </div>
 
         </div>
 
     </div>
+
+</div> 
+
+        
+
 
     <!-- FOOTER -->
 
