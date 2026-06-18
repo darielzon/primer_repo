@@ -427,3 +427,8 @@ footer{
 
     color: #000;
 }
+#productoImagen{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}

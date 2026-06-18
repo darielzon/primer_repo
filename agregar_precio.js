@@ -217,6 +217,7 @@ producto.imagen
 
 function cerrarModal(){
 
+    
     document
     .getElementById("modalEditar")
     .classList
@@ -235,6 +236,8 @@ document.addEventListener("input",(e)=>{
         document
         .getElementById("modalImagen")
         .src = e.target.value;
+
+        
 
     }
 
@@ -355,8 +358,10 @@ async function eliminarProducto(){
         const resultado = await res.json();
 
         alert(resultado.mensaje);
+        
 
         cerrarModal();
+
 
         cargarProductos();
 
@@ -433,16 +438,17 @@ imagenNueva;
     });
 
 });
+
 window.addEventListener("click", function(e) {
 
-    const modal = document.getElementById("modalProducto");
+    const modal = document.getElementById("modalEditar");
 
     if (e.target === modal) {
 
-        cerrarModalProducto();
+        cerrarModal();
+
     }
 
 });
-
 
 cargarProductos();
