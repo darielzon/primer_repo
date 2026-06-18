@@ -144,7 +144,7 @@ function buscarProducto() {
     .toLowerCase()
     .trim();
     
-    const caracteristicas = normalizar(
+    const caracteristicas = nor(
     document.getElementById("buscaCaracteristicas")
     .value);
 
@@ -168,7 +168,7 @@ function buscarProducto() {
 (!categoria ||
 (p.categoria || "").toLowerCase().includes(categoria))
  
-&&
+        &&
 (!caracteristicas ||
 nor(p.caracteristicas).includes(caracteristicas))
 
