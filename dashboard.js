@@ -107,7 +107,7 @@ function cargarSugerencias(){
     });
 
 }
-function normalizar(texto) {
+function nor(texto) {
 
     return (texto || "")
         .toLowerCase()
@@ -170,7 +170,7 @@ function buscarProducto() {
  
 &&
 (!caracteristicas ||
-normalizar(p.caracteristicas).includes(caracteristicas))
+nor(p.caracteristicas).includes(caracteristicas))
 
     
 
