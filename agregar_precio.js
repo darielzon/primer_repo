@@ -224,6 +224,17 @@ function cerrarModal(){
     .remove("open");
 
 }
+window.addEventListener("click", function(e) {
+
+    const modal = document.getElementById("modalEditar");
+
+    if (e.target === modal) {
+
+        cerrarModal();
+
+    }
+
+});
 
 // ==========================
 // ACTUALIZAR PREVIEW IMAGEN
@@ -439,16 +450,6 @@ imagenNueva;
 
 });
 
-window.addEventListener("click", function(e) {
 
-    const modal = document.getElementById("modalEditar");
-
-    if (e.target === modal) {
-
-        cerrarModal();
-
-    }
-
-});
 
 cargarProductos();
