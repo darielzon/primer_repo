@@ -4,9 +4,8 @@ function cerrarSesion(){
 
 let imagenRuta = "";
 
-// =======================
+
 // PREVIEW IMAGEN
-// =======================
 
 function previewImage(event){
 
@@ -35,9 +34,8 @@ function previewImage(event){
 
 }
 
-// =======================
 // GUARDAR PRODUCTO
-// =======================
+
 
 async function simularGuardado(){
 
@@ -78,9 +76,8 @@ async function simularGuardado(){
 
     try{
 
-        // =======================
+
         // SUBIR IMAGEN
-        // =======================
 
         if(archivo){
 
@@ -117,9 +114,11 @@ console.log("URL imagen:", dataImagen.ruta);
 
         }
 
-        // =======================
+        
+        
         // GUARDAR PRODUCTO
-        // =======================
+        
+        
 
         const respuesta =
         await fetch(
@@ -191,9 +190,9 @@ console.log("URL imagen:", dataImagen.ruta);
 
 }
 
-// =======================
+
 // LIMPIAR FORMULARIO
-// =======================
+
 
 function limpiarFormulario(){
 

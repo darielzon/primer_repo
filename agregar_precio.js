@@ -3,9 +3,9 @@ const API = "https://primer-repo-nwmb.onrender.com/productos";
 let productosGlobal = [];
 let idProductoActual = null;
 let imagenNueva = "";
-// ==========================
+
 // CARGAR PRODUCTOS
-// ==========================
+
 
 async function cargarProductos() {
 
@@ -28,9 +28,8 @@ async function cargarProductos() {
 
 }
 
-// ==========================
+
 // RENDER TABLA
-// ==========================
 
 function renderTabla(data) {
 
@@ -90,9 +89,9 @@ function normalizar(texto) {
 
 }
 
-// ==========================
+
 // BUSCAR
-// ==========================
+
 
 function buscarProducto() {
 
@@ -152,9 +151,9 @@ normalizar(p.caracteristicas).includes(caracteristicas))
 
 
 
-// ==========================
+
 // ABRIR MODAL
-// ==========================
+
 
 function abrirModal(id){
     
@@ -211,9 +210,9 @@ producto.imagen
         .add("open");
 
 }
-// ==========================
+
 // CERRAR MODAL
-// ==========================
+
 
 function cerrarModal(){
 
@@ -236,9 +235,9 @@ window.addEventListener("click", function(e) {
 
 });
 
-// ==========================
+
 // ACTUALIZAR PREVIEW IMAGEN
-// ==========================
+
 
 document.addEventListener("input",(e)=>{
 
@@ -254,9 +253,9 @@ document.addEventListener("input",(e)=>{
 
 });
 
-// ==========================
+
 // GUARDAR CAMBIOS
-// ==========================
+
 
 async function guardarDatos(){
 
@@ -334,9 +333,9 @@ document.getElementById("modalImagenInput").value
 
 }
 
-// ==========================
+
 // ELIMINAR PRODUCTO
-// ==========================
+
 
 async function eliminarProducto(){
 
@@ -387,9 +386,9 @@ async function eliminarProducto(){
 
 
 // INICIO
-// ==========================
+
 // CAMBIAR IMAGEN
-// ==========================
+
 
 document.addEventListener("DOMContentLoaded", () => {
 

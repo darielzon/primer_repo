@@ -3,9 +3,9 @@ const API = "https://primer-repo-nwmb.onrender.com/productos";
 let productosGlobal = [];
 let productoActual = null;
 
-// ==========================
+
 // CARGAR PRODUCTOS
-// ==========================
+
 
 async function cargarProductos() {
 
@@ -69,9 +69,9 @@ function mostrarResultados(productos) {
 
 }
 
-// ==========================
+
 // CARGAR SUGERENCIAS
-// ==========================
+
 
 function cargarSugerencias(){
 
@@ -118,9 +118,9 @@ function nor(texto) {
 
 }
 
-// ==========================
+
 // BUSCAR PRODUCTO
-// ==========================
+
 
 function buscarProducto() {
 
@@ -215,9 +215,9 @@ function seleccionarProducto(id){
     mostrarProducto(producto);
 
 }
-// ==========================
+
 // MOSTRAR PRODUCTO
-// ==========================
+
 
 function mostrarProducto(producto){
 
@@ -277,9 +277,9 @@ producto.imagen !== "undefined"
 
 }
 
-// ==========================
+
 // CALCULAR TOTAL
-// ==========================
+
 
 function calcularTotal(){
 
@@ -306,9 +306,9 @@ function calcularTotal(){
 
 }
 
-// ==========================
+
 // VENDER PRODUCTO
-// ==========================
+
 
 async function venderProducto(){
 
@@ -443,9 +443,9 @@ async function venderProducto(){
 
 }
 
-// ==========================
+
 // CREAR TICKET
-// ==========================
+
 
 function crearTicket(){
 
@@ -640,9 +640,9 @@ async function generarPDF(){
 
 }
 
-// ==========================
+
 // IMPRIMIR TICKET
-// ==========================
+
 
 function imprimirTicket(){
 
@@ -703,9 +703,9 @@ function imprimirTicket(){
 
 }
 
-// ==========================
+
 // CERRAR SESIÓN
-// ==========================
+
 
 function cerrarSesion(){
 
@@ -718,9 +718,9 @@ function cerrarSesion(){
 
 }
 
-// ==========================
+
 // EVENTOS
-// ==========================
+
 
 window.addEventListener(
 
@@ -750,9 +750,9 @@ window.addEventListener(
 
 );
 
-// ==========================
+
 // CERRAR MODAL
-// ==========================
+
 
 function cerrarModalProducto() {
 
@@ -774,8 +774,8 @@ window.addEventListener("click", function(e) {
 
 });
 
-// ==========================
+
 // INICIO
-// ==========================
+
 
 cargarProductos();
