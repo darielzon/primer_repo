@@ -432,3 +432,21 @@ footer{
     height: 200px;
     object-fit: contain;
 }
+
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+    .header{
+        flex-direction: column;
+    }
+
+    .inputs{
+        flex-direction: column;
+    }
+
+    .botones{
+        flex-direction: column;
+    }
+
+}

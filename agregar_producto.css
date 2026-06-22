@@ -286,3 +286,13 @@ footer{
     padding: 15px;
     font-size: 14px;
 }
+/* RESPONSIVE */
+@media (max-width:768px){
+
+    .inputs-busqueda{
+        flex-direction: column;
+    }
+
+    .modal-content{
+        width:95%;
+    }}
